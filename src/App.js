@@ -8,22 +8,18 @@ import Header from "./components/Header";
 import cards from "./cards.json";
 import "./App.css";
 
-
-
-
-
 class App extends Component {
   // Setting this.state.cards to the cards json array
   state = {
     cards,
     score: 0,
     highscore: 0,
-    results:""
+    results: ""
   };
 
   gameOver = () => {
     if (this.state.score > this.state.highscore) {
-      this.setState({highscore: this.state.score}, function() {
+      this.setState({ highscore: this.state.score }, function () {
         console.log(this.state.highscore);
       });
     }
@@ -31,29 +27,34 @@ class App extends Component {
       card.count = 0;
     });
     // alert(`Game Over :( \nscore: ${this.state.score}`);
-    this.setState({score: 0});
+    if (this.state.score === 12) {
+      this.setState({ results: "" })
+    } else {
+      this.setState({ results: "WRONG!!!" })
+    }
+    this.setState({ score: 0 });
     return true;
   }
 
   clickCount = id => {
     this.state.cards.find((o, i) => {
       if (o.id === id) {
-        if(cards[i].count === 0){
-          this.setState({results:""});
+        if (cards[i].count === 0) {
+          this.setState({ results: "" });
           cards[i].count = cards[i].count + 1;
-          this.setState({score : this.state.score + 1}, function(){
-            if (this.state.score === 12){
+          this.setState({ score: this.state.score + 1 }, function () {
+            if (this.state.score === 12) {
               // alert("Winner");
-              // this.setState({results: "CONGRADULATIONS! You win!"});
+              this.setState({ results: "CONGRADULATIONS!" });
               // this.gameOver();
             }
             console.log(this.state.score, o.id);
           });
           this.state.cards.sort(() => Math.random(o.id) - 0.5)
-          return true; 
+          return true;
         } else {
-          
-    // this.setState({results: "Game Over! Your score is "+this.state.score});
+
+          this.setState({ results: "" });
           this.gameOver();
         }
       }
@@ -78,50 +79,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ORIGINAL REACT CODE
-///////////////////////
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-//////////////////////////
-*/

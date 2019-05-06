@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Live Demo:
 
-[Heroku/ClickyGame](heroku.com)
+[Heroku/ClickyGame](https://am-clickygame.herokuapp.com/)
 
 In the project directory, you can run:
 
