@@ -1,0 +1,20 @@
+.header {
+    width: 100%;
+    font-size: 2rem;
+    color: rgb(255, 40, 40);
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  
+  .title {
+    float: left;
+  }
+  
+  .result{
+    float: center;
+  }
+
+  .scores {
+    float: right;
+  }
+  
